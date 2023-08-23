@@ -11,8 +11,7 @@
 #include <unistd.h>
 #include <string.h>
 
-
-extern glob_t global;
+extern file_t global;
 extern int value;
 
 /**
@@ -50,14 +49,14 @@ typedef struct instruction_s
  * struct global_functions - global and its funcs
  * @fd: File descriptor
  * @line: Line to getline
- *
  * Description: To handle the file and getline
  */
-typedef struct global_functions
+
+typedef struct file_t
 {
 	FILE *fd;
 	char *line;
-} glob_t;
+} file_t;
 
 void handle_command(char *argv);
 int get_opc(stack_t **stack, char *arg, char *item, int count);
