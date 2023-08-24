@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _POSIX_C_SOURCE 200809L
 
 
 #include <stdio.h>
@@ -10,9 +11,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <readline.h>
 
-extern file_t global;
-extern int value;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -58,6 +59,9 @@ typedef struct file_t
 	char *line;
 } file_t;
 
+extern file_t global;
+extern int value;
+
 void handle_command(char *argv);
 int get_opc(stack_t **stack, char *arg, char *item, int count);
 void _push(stack_t **stack, unsigned int line_number);
@@ -68,6 +72,8 @@ void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
+void cleanStack(stack_t **stack);
+void free_dlistint(stack_t *stack);
 int _isdigit(char *c);
 stack_t *new_Node(int n);
 void push_error(FILE *fd, char *line, stack_t *stack, int count);
