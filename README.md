@@ -45,7 +45,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 ```
-### Compilation & Output :dvd:
+### Compilation & Output:
 
 -  Your code will be compiled this way:
 
