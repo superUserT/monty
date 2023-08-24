@@ -1,5 +1,4 @@
 # The Monty language
-Stacks, Queues - LIFO, FIFO
 
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
 
@@ -159,3 +158,24 @@ The opcode sub subtracts the top element of the stack from the second top elemen
         The top element of the stack contains the result
         The stack is one element shorter
 
+
+The **synopsis** of the interpreter is the following:
+
+```bash
+$ ./monty [filename]
+$
+```
+
+To run the interpreter:
+
+```bash
+$ ./monty file.m
+2
+1
+0
+0
+3
+2
+1
+$
+```
