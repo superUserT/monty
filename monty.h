@@ -11,8 +11,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-#include <readline.h>
-
 
 
 /**
