@@ -53,7 +53,7 @@ void handle_command(char *argv)
 			if (result == 1)
 				f_push_error(global.fd, global.line, stack, count);
 			else if (result == 2)
-				ins_error(global.fd, global.line, stack, arguments, count);
+				f_instr_error(global.fd, global.line, stack, arguments, count);
 		}
 		free(global.line);
 		free_dlistint(stack);
@@ -81,10 +81,10 @@ int f_get_opcode(stack_t **stack, char *arg, char *item, int count)
 		{"push", f_pushitem},
 		{"pall", f_pall},
 		{"pint", f_pint},
-		{"pop", _pop},
+		{"pop", f_popitem},
 		{"swap", f_swapitem},
 		{"add", f_addint},
-		{"sub", _sub},
+		{"sub", f_substack},
 		{"nop", f_nopvoid},
 		{NULL, NULL}
 	};

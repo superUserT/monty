@@ -66,7 +66,7 @@ void f_addint(stack_t **stack, unsigned int line_number)
 	current = *stack;
 	sum = current->n + current->next->n;
 	current->next->n = sum;
-	_pop(stack, line_number);
+	f_popitem(stack, line_number);
 }
 
 
@@ -102,5 +102,5 @@ void f_substack(stack_t **stack, unsigned int line_number)
 	}
 	sub = current->next->n - current->n;
 	current->next->n = sub;
-	_pop(stack, line_number);
+	f_popitem(stack, line_number);
 }
