@@ -61,20 +61,20 @@ extern file_t global;
 extern int value;
 
 void handle_command(char *argv);
-int get_opc(stack_t **stack, char *arg, char *item, int count);
-void _push(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_number);
+int f_get_opcode(stack_t **stack, char *arg, char *item, int count);
+void f_pushitem(stack_t **stack, unsigned int line_number);
+void f_pall(stack_t **stack, unsigned int line_number);
+void f_pint(stack_t **stack, unsigned int line_number);
+void f_swapitem(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
+void f_addint(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void cleanStack(stack_t **stack);
+void f_nopvoid(stack_t **stack, unsigned int line_number);
+void f_cleanStack(stack_t **stack);
 void free_dlistint(stack_t *stack);
 int _isdigit(char *c);
-stack_t *new_Node(int n);
-void push_error(FILE *fd, char *line, stack_t *stack, int count);
+stack_t *newNode(int n);
+void f_push_error(FILE *fd, char *line, stack_t *stack, int count);
 void ins_error(FILE *fd, char *line, stack_t *stack, char *count, int item);
 
 

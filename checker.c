@@ -27,11 +27,11 @@ int _isdigit(char *c)
 }
 
 /**
- * cleanStack - Frees mallocs and close de files
+ * f_cleanStack - Frees mallocs and close de files
  * @stack: Stack
  */
 
-void cleanStack(stack_t **stack)
+void f_cleanStack(stack_t **stack)
 {
 	stack_t *current = *stack;
 

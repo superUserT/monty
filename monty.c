@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 /**
  * handle_command - Read file
  * @argv: Arguments
- * Return: Nothing
+ * Return: void
  */
 
 void handle_command(char *argv)
@@ -49,9 +49,9 @@ void handle_command(char *argv)
 			else if (*arguments == '#')
 				continue;
 			item = strtok(NULL, " \n\t\r");
-			result = get_opc(&stack, arguments, item, count);
+			result = f_get_opcode(&stack, arguments, item, count);
 			if (result == 1)
-				push_error(global.fd, global.line, stack, count);
+				f_push_error(global.fd, global.line, stack, count);
 			else if (result == 2)
 				ins_error(global.fd, global.line, stack, arguments, count);
 		}
@@ -66,26 +66,26 @@ void handle_command(char *argv)
 	}
 }
 /**
- * get_opc - function to handle the opcode
+ * f_get_opcode - function to handle the opcode
  * @stack: is a stack or queue
  * @arg: is a parameter
  * @item: is a parameter
  * @count: is a line command
  * Return: nothing
  */
-int get_opc(stack_t **stack, char *arg, char *item, int count)
+int f_get_opcode(stack_t **stack, char *arg, char *item, int count)
 {
 	int i = 0;
 
 	instruction_t op[] = {
-		{"push", _push},
-		{"pall", _pall},
-		{"pint", _pint},
+		{"push", f_pushitem},
+		{"pall", f_pall},
+		{"pint", f_pint},
 		{"pop", _pop},
-		{"swap", _swap},
-		{"add", _add},
+		{"swap", f_swapitem},
+		{"add", f_addint},
 		{"sub", _sub},
-		{"nop", _nop},
+		{"nop", f_nopvoid},
 		{NULL, NULL}
 	};
 

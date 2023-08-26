@@ -3,12 +3,12 @@
 int value;
 
 /**
- * new_Node - creates a new node
+ * newNode - creates a new node
  * @n: is a value
  * Return: new node
  */
 
-stack_t *new_Node(int n)
+stack_t *newNode(int n)
 {
 	stack_t *new = NULL;
 
@@ -26,17 +26,17 @@ stack_t *new_Node(int n)
 }
 
 /**
- * _push - pushs an item
+ * f_pushitem - pushs an item
  * @stack: is a parameter
  * @line_number: is value
  */
 
-void _push(stack_t **stack, unsigned int line_number)
+void f_pushitem(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new = NULL;
 	(void)line_number;
 
-	new = new_Node(value);
+	new = newNode(value);
 
 	new->next = *stack;
 	if (*stack != NULL)
@@ -47,13 +47,13 @@ void _push(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * _pall - prints all the values on the stack
+ * f_pall - prints all the values on the stack
  * @stack: is a parameter
  * @n: is value
  * Return: nothing
  */
 
-void _pall(stack_t **stack, unsigned int n)
+void f_pall(stack_t **stack, unsigned int n)
 {
 	stack_t *current = NULL;
 	(void)n;
@@ -87,17 +87,17 @@ void free_dlistint(stack_t *stack)
 }
 
 /**
- * _pint - prints the value at the top of the stack.
+ * f_pint - prints the value at the top of the stack.
  * @stack: Stack list
  * @line_number: Number of the line
  */
 
-void _pint(stack_t **stack, unsigned int line_number)
+void f_pint(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !stack)
 	{
 		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		cleanStack(stack);
+		f_cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
 	else
