@@ -1,28 +1,23 @@
 #include "monty.h"
 
-int value;
+extern int value;
 
 /**
- * newNode - creates a new node
- * @n: is a value
- * Return: new node
+ * f_pint - prints the value at the top of the stack.
+ * @stack: Stack list
+ * @line_number: Number of the line
  */
 
-stack_t *newNode(int n)
+void f_pint(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new = NULL;
-
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+	if (!*stack || !stack)
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
+		f_cleanStack(stack);
 		exit(EXIT_FAILURE);
 	}
-	new->n = n;
-	new->next = NULL;
-	new->prev = NULL;
-
-	return (new);
+	else
+		dprintf(STDOUT_FILENO, "%d\n", (*stack)->n);
 }
 
 /**
@@ -68,6 +63,29 @@ void f_pall(stack_t **stack, unsigned int n)
 }
 
 /**
+ * newNode - creates a new node
+ * @n: is a value
+ * Return: new node
+ */
+
+stack_t *newNode(int n)
+{
+	stack_t *new = NULL;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	new->n = n;
+	new->next = NULL;
+	new->prev = NULL;
+
+	return (new);
+}
+
+/**
  * free_dlistint - Free a list.
  * @stack: Head node.
  * Return: Nothing.
@@ -84,22 +102,4 @@ void free_dlistint(stack_t *stack)
 		free_dlistint(current->next);
 		free(current);
 	}
-}
-
-/**
- * f_pint - prints the value at the top of the stack.
- * @stack: Stack list
- * @line_number: Number of the line
- */
-
-void f_pint(stack_t **stack, unsigned int line_number)
-{
-	if (!*stack || !stack)
-	{
-		dprintf(STDERR_FILENO, "L%d: can't pint, stack empty\n", line_number);
-		f_cleanStack(stack);
-		exit(EXIT_FAILURE);
-	}
-	else
-		dprintf(STDOUT_FILENO, "%d\n", (*stack)->n);
 }

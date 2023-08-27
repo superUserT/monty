@@ -1,5 +1,22 @@
 #include "monty.h"
 
+/**
+ * f_cleanStack - Frees mallocs and close de files
+ * @stack: Stack
+ */
+
+void f_cleanStack(stack_t **stack)
+{
+	stack_t *current = *stack;
+
+	for (; current; current = *stack)
+	{
+		*stack = (*stack)->next;
+		free(current);
+	}
+	fclose(global.fd);
+	free(global.line);
+}
 
 /**
  * _isdigit - Checks for a digit 0 through 9
@@ -26,20 +43,3 @@ int _isdigit(char *c)
 	return (1);
 }
 
-/**
- * f_cleanStack - Frees mallocs and close de files
- * @stack: Stack
- */
-
-void f_cleanStack(stack_t **stack)
-{
-	stack_t *current = *stack;
-
-	for (; current; current = *stack)
-	{
-		*stack = (*stack)->next;
-		free(current);
-	}
-	fclose(global.fd);
-	free(global.line);
-}
